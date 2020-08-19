@@ -47,11 +47,11 @@ void loop() {
     if (cap.touched() & (1 << i)) {
       myMP3.wakeUp();
       myMP3.play(i + 1);
-      while (myMP3.isPlaying()) {
-        delay(5000);
-        if (!myMP3.isPlaying()) {    // this is not working, why??
-          break;
-        }
+      if (myMP3.isPlaying()) {
+        while(1);
+        //delay(5000);
+        if (!myMP3.isPlaying()) 
+          break;        
       }
       myMP3.sleep();
     }
