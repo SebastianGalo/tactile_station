@@ -26,7 +26,7 @@ void setup() {
   myMP3.sleep();
 
 
-    // Default address is 0x5A, if tied to 3.3V its 0x5B
+  // Default address is 0x5A, if tied to 3.3V its 0x5B
   // If tied to SDA its 0x5C and if SCL then 0x5D
   if (!cap.begin(0x5A)) {
     Serial.println("MPR121 not found, check wiring?");
@@ -43,19 +43,18 @@ void loop() {
   for (uint8_t i = 0; i < 12; i++) {
 
 
-    //Touch input reading and corresponding track is played
     if (cap.touched() & (1 << i)) {
       myMP3.wakeUp();
       myMP3.play(i + 1);
       while (myMP3.isPlaying()) {
-        delay(5000);
-        if (!myMP3.isPlaying()) {    // this is not working, why??
-          break;
-        }
+        myMP3.play(i + 1);
+        break;
       }
       myMP3.sleep();
     }
   }
-  
-//Loop end
+
+
+
+  //Loop end
 }
