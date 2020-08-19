@@ -49,9 +49,9 @@ void loop() {
       myMP3.play(i + 1);
       while (myMP3.isPlaying()) {
         delay(5000);
-       // if (!myMP3.isPlaying()) {     this is not working, why??
+        if (!myMP3.isPlaying()) {    // this is not working, why??
           break;
-        //}
+        }
       }
       myMP3.sleep();
     }
