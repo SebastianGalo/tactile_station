@@ -55,11 +55,8 @@ void loop() {
 
 
 
-  // if it *is* touched and *wasnt* touched before, send data!
+  // If it *is* touched and *wasnt* touched before, send data!
   for (uint8_t i = 0; i < 12; i++) {
-
-
-
 
     //Pin reading and corresponding track is played
     if (cap.touched() & (1 << i)) {
@@ -68,14 +65,12 @@ void loop() {
       while (myMP3.isPlaying() == true) {
         delay (2000);
       }
-
-
       myMP3.sleep();
     }
-
-
   }
 
+  
+  
   // reset our state
   lasttouched = currtouched;
 }
